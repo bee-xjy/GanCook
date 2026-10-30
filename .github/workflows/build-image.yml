@@ -1,0 +1,31 @@
+
+name: Build GanCook Docker Image
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Docker image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          platforms: linux/amd64
+          tags: gloridust/gancook:0.1.1
+          outputs: type=docker,dest=/tmp/gancook.tar
+
+      - name: Upload image
+        uses: actions/upload-artifact@v4
+        with:
+          name: gancook-image
+          path: /tmp/gancook.tar
+          retention-days: 7
