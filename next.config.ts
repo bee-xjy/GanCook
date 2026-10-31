@@ -1,6 +1,7 @@
 import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
+  basePath: '/gancook_qazplm',
   // 单容器自部署：输出独立运行包，Docker 只需拷贝 standalone
   output: 'standalone',
   // better-sqlite3 / sharp 是原生模块，标记为外部依赖避免被打包
