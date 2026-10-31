@@ -20,7 +20,7 @@ jobs:
         with:
           context: .
           platforms: linux/amd64
-          tags: gloridust/gancook:0.1.1
+          tags: gloridust/gancook:0.1.2
           outputs: type=docker,dest=/tmp/gancook.tar
 
       - name: Upload image
